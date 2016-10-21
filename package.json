@@ -134,7 +134,6 @@
     "ng2-f-client-models": "^0.x",
     "ng2-f-form-tools": "~0.1",
     "lodash": "^4.16.3",
-    "ng2-file-upload": "~1.0.3",
     "ng2-translate": "~2.4.4",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "0.6.25"
