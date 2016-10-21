@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
           <li class="nav-item">
             <a routerLink="items" routerLinkActive="active" class="nav-link">Items</a>
           </li>
+          <li class="nav-item">
+            <a routerLink="clients" routerLinkActive="active" class="nav-link">Clients</a>
+          </li>
         </ul>
       </nav>
       <router-outlet></router-outlet>

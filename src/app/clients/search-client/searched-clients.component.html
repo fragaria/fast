@@ -1,0 +1,8 @@
+<div *ngIf="isActive" class="modal-layer">
+
+  <ng2-f-client-list (clientSelected)="clientSelected($event)"
+  [clients]="clients" [listTitle]="listLabel" [selectLabel]="selectLabel"></ng2-f-client-list>
+
+  <button type="button" class="close btn btn-link" (click)="closeIt()">X</button>
+
+</div>

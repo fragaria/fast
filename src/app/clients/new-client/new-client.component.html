@@ -1,0 +1,31 @@
+<div class="col-sm-6">
+
+  <div *ngIf="isVisible">
+    <h3>{{ message }}</h3>
+    <form [formGroup]="newClientFormManager.form"  *ngIf="active"  (ngSubmit)="onSubmit()">
+      <ng2-f-name-field
+        [form]="newClientFormManager.form"
+        [fieldLabel]="'Jméno'"
+        [controlName]="'name'"
+        [errors]="newClientFormManager.errors.errors"></ng2-f-name-field>
+
+      <ng2-f-personal-ident-number-field
+        [form]="newClientFormManager.form"
+        [fieldLabel]="'Rodné číslo'"
+        [controlName]="'personalIdentNumber'"
+        [errors]="newClientFormManager.errors.errors"></ng2-f-personal-ident-number-field>
+
+      <ng2-f-email-field
+        [form]="newClientFormManager.form"
+        [fieldLabel]="'Email'"
+        [controlName]="'email'"
+        [errors]="newClientFormManager.errors.errors"></ng2-f-email-field>
+
+      <button type="submit" class="btn btn-default"
+             [disabled]="!newClientFormManager.form.valid">Přidat</button>
+      <button type="button" class="btn btn-default"
+             (click)="cleanForm()">Vyčistit</button>
+    </form>
+  </div>
+
+</div>

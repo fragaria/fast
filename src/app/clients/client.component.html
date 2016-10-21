@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Klientská sekce</h1>
+    <div class="row">
+      <ng2-f-clients-relation-ships></ng2-f-clients-relation-ships>
+      <ng2-f-selected-clients></ng2-f-selected-clients>
+    </div>
+    <div class="row">
+      <ng2-f-search-client (searched)="searched($event)" (notSearched)="notSearched($event)" ></ng2-f-search-client>
+      <ng2-f-new-client [client]="client" [isVisible]="client"></ng2-f-new-client>
+      <ng2-f-searched-clients [clients]="clients" [isActive]="clients"></ng2-f-searched-clients>
+    </div>
+  </div>
+</div>
