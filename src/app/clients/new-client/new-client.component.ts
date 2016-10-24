@@ -16,7 +16,7 @@ import { SelectedClientsService }                       from '../selected-client
 
 @Component({
   selector: 'ng2-f-new-client',
-  template: require('./new-client.component.html')
+  templateUrl: 'new-client.component.html'
 })
 export class NewClientComponent implements OnInit {
 

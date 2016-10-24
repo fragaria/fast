@@ -5,7 +5,7 @@ import { SelectedClientsService } from '../selected-clients';
 
 @Component({
   selector: 'ng2-f-searched-clients',
-  template: require('./searched-clients.component.html')
+  templateUrl: 'searched-clients.component.html'
 })
 export class SearchedClientsComponent {
   @Input() isActive: boolean;

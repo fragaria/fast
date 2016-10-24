@@ -17,7 +17,7 @@ import { SelectedClientsService } from '../selected-clients';
 
 @Component({
   selector: 'ng2-f-search-client',
-  template: require('./search-client.component.html')
+  templateUrl: 'search-client.component.html'
 })
 export class SearchClientComponent implements OnInit {
 

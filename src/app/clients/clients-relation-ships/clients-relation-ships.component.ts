@@ -7,7 +7,7 @@ import { ClientsRelationShipsService } from './clients-relation-ships.service';
 
 @Component({
   selector: 'ng2-f-clients-relation-ships',
-  template: require('./clients-relation-ships.component.html')
+  templateUrl: 'clients-relation-ships.component.html'
 })
 export class ClientsRelationShipsComponent implements OnInit {
   clients: Promise<Client[]>;
