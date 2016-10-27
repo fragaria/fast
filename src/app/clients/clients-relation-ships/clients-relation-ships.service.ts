@@ -1,26 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
+
+import { HttpBaseService } from '../../shared';
 
 import { Client } from 'ng2-f-client-models';
 
-const CLIENTS_RELATION_SHIP: { [id: number] : Client[]; } = {};
-CLIENTS_RELATION_SHIP[1] = [
-  new Client(13, "Karel Vomáčka", "9007260987", "karel@michal.cz"),
-  new Client(14, "Janek Paprika", "7807260987", "janek@michal.cz"),
-];
-
-const EMPTY_RELATION_SHIP_ARRAY: Client[] = [];
-
 @Injectable()
-export class ClientsRelationShipsService {
+export class ClientsRelationShipsService extends HttpBaseService<Client> {
+  protected url = 'api/clientsRelated';  // URL to web API
 
-  getRelatedClients(clientId?: number | string) {
-    let targetArray: Client[] = EMPTY_RELATION_SHIP_ARRAY;
-    clientId = +clientId;
-    if (clientId && clientId in CLIENTS_RELATION_SHIP) {
-      targetArray = CLIENTS_RELATION_SHIP[clientId];
-    }
-    return new Promise<Client[]>(resolve => {
-      resolve(targetArray);
-    });
+  constructor (protected http: Http) { super(http); }
+
+  getRelatedClients(clientId: number | string): Promise<Client[]> {
+    const url = `${this.url}?relatedWith=${clientId}`;
+    return this.getObjects(url)
   }
+
 }
