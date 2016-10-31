@@ -9,6 +9,7 @@ import { Client } from 'ng2-f-client-models';
 @Injectable()
 export class ClientService extends HttpBaseService<Client> {
   protected url = 'api/clients';  // URL to web API
+  protected model = Client;
 
   constructor (protected http: Http) { super(http); }
 
