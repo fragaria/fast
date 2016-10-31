@@ -9,7 +9,7 @@ import { SelectedClientsService } from '../selected-clients';
 })
 export class SearchedClientsComponent {
   @Input() isActive: boolean;
-  _clients: Promise<Client[]>;
+  _clients: Client[] | Promise<Client[]>;
   listLabel: string = 'Nalezení klienti:';
   selectLabel: string = 'Vybrat';
 
@@ -19,7 +19,7 @@ export class SearchedClientsComponent {
       this._clients = new Promise<Client[]>(resolve => {
         resolve(clients);
       });
-      }
+    }
   }
 
   get clients(): Client[] | Promise<Client[]> {

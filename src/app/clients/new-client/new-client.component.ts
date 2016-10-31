@@ -42,7 +42,7 @@ export class NewClientComponent implements OnInit {
 
   onSubmit() {
     this.client.update(this.newClientFormManager.form.value);
-    this.clientService.addClient(this.client).then(
+    this.clientService.saveClient(this.client).then(
       client => this.selectedClientService.addClient(client)
     ).then(
       client => this.processAfterClientAdded(client)
