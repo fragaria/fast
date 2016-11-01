@@ -138,7 +138,7 @@
     "ng2-f-client-list": "^0.x",
     "ng2-f-client-models": "^0.x",
     "ng2-f-form-tools": "~0.1",
-    "ng2-f-mock-api": "^0.0.1",
+    "ng2-f-mock-api": "^0.x",
     "lodash": "^4.16.3",
     "ng2-translate": "~2.4.4",
     "rxjs": "5.0.0-beta.12",
