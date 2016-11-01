@@ -6,15 +6,15 @@ import { HttpBaseService } from '../../shared';
 import { Client } from 'ng2-f-client-models';
 
 @Injectable()
-export class ClientsRelationShipsService extends HttpBaseService<Client> {
+export class ClientsRelationShipsService {
   protected url = 'api/clientsRelated';  // URL to web API
   protected model = Client;
 
-  constructor (protected http: Http) { super(http); }
+  constructor (protected http: HttpBaseService<Client>) { }
 
   getRelatedClients(clientId: number | string): Promise<Client[]> {
     const url = `${this.url}?relatedWith=${clientId}`;
-    return this.getObjects(url)
+    return this.http.getObjects(url, this.model)
   }
 
 }

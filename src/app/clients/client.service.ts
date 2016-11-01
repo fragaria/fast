@@ -7,18 +7,18 @@ import { HttpBaseService } from '../shared';
 import { Client } from 'ng2-f-client-models';
 
 @Injectable()
-export class ClientService extends HttpBaseService<Client> {
+export class ClientService {
   protected url = 'api/clients';  // URL to web API
   protected model = Client;
 
-  constructor (protected http: Http) { super(http); }
+  constructor (protected http: HttpBaseService<Client>) { }
 
   getClients(): Promise<Client[]> {
-    return this.getObjects()
+    return this.http.getObjects(this.url, this.model)
   }
 
   saveClient(client: Client): Promise<Client> {
-    return client.id == null ? this.addObject(client) : this.updateObject(client)
+    return client.id == null ? this.http.addObject(client, this.url, this.model) : this.http.updateObject(client, this.url, this.model)
   }
 
 }
