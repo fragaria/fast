@@ -3,30 +3,37 @@ import { Injectable } from '@angular/core';
 
 import { Client } from 'ng2-f-client-models';
 
+import { Observable } from 'rxjs/Observable';
+
 let SELECTED_CLIENTS: Client[] = [];
 
 @Injectable()
 export class SelectedClientsService {
 
-  getClients() {
-    return new Promise<Client[]>(resolve => {
-      resolve(SELECTED_CLIENTS);
-    });
+  getClientsArray(): Client[] {
+    return SELECTED_CLIENTS
   }
 
-  addClient(client: Client) {
-    return this.getClients()
-      .then(clients => this.addToClients(clients, client));
+  getClients(): Observable<Client[]> {
+    return Observable.of(this.getClientsArray());
   }
 
-  deleteClient(client: Client) {
-    return this.getClients()
-      .then(clients => _.remove(clients, (c) => c.id === client.id));
+  addClient(client: Client): Observable<Client> {
+    return Observable.of(this.addToClientsArray(this.getClientsArray(), client))
   }
 
-  addToClients(clients: Client[], client: Client) {
+  deleteClient(client: Client): Observable<Client> {
+    return Observable.of(this.removeFromClientsArray(this.getClientsArray(), client))
+  }
+
+  addToClientsArray(clients: Client[], client: Client): Client {
     let result = clients.filter((c) => c.id === client.id)
     if (result.length == 0) clients.unshift(client);
+    return client
+  }
+
+  removeFromClientsArray(clients: Client[], client: Client): Client {
+    _.remove(this.getClientsArray(), (c) => c.id === client.id)
     return client
   }
 }

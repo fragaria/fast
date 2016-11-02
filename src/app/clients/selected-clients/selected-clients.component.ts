@@ -4,12 +4,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Client }                 from 'ng2-f-client-models';
 import { SelectedClientsService } from './selected-clients.service';
 
+import { Observable } from 'rxjs/Observable';
+
 @Component({
   selector: 'ng2-f-selected-clients',
   templateUrl: 'selected-clients.component.html'
 })
 export class SelectedClientsComponent implements OnInit {
-  clients: Promise<Client[]>;
+  clients: Observable<Client[]>;
   listLabel: string = 'Výběr:';
 
   constructor(

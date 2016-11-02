@@ -13,6 +13,7 @@ import { Client }                                       from 'ng2-f-client-model
 import { ClientService }                                from '../client.service';
 import { SelectedClientsService }                       from '../selected-clients';
 
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'ng2-f-new-client',
@@ -42,10 +43,10 @@ export class NewClientComponent implements OnInit {
 
   onSubmit() {
     this.client.update(this.newClientFormManager.form.value);
-    this.clientService.saveClient(this.client).then(
-      client => this.selectedClientService.addClient(client)
-    ).then(
-      client => this.processAfterClientAdded(client)
+    this.clientService.saveClient(this.client).subscribe(
+      client => this.selectedClientService.addClient(client).subscribe(
+        client => this.processAfterClientAdded(client)
+      )
     );
   }
 

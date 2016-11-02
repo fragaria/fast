@@ -5,6 +5,8 @@ import { HttpBaseService } from '../../shared';
 
 import { Client } from 'ng2-f-client-models';
 
+import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 export class ClientsRelationShipsService {
   protected url = 'api/clientsRelated';  // URL to web API
@@ -12,7 +14,7 @@ export class ClientsRelationShipsService {
 
   constructor (protected http: HttpBaseService<Client>) { }
 
-  getRelatedClients(clientId: number | string): Promise<Client[]> {
+  getRelatedClients(clientId: number | string): Observable<Client[]> {
     const url = `${this.url}?relatedWith=${clientId}`;
     return this.http.getObjects(url, this.model)
   }

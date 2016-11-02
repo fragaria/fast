@@ -5,12 +5,14 @@ import { Client }                 from 'ng2-f-client-models';
 import { SelectedClientsService } from '../selected-clients/selected-clients.service';
 import { ClientsRelationShipsService } from './clients-relation-ships.service';
 
+import { Observable } from 'rxjs/Observable';
+
 @Component({
   selector: 'ng2-f-clients-relation-ships',
   templateUrl: 'clients-relation-ships.component.html'
 })
 export class ClientsRelationShipsComponent implements OnInit {
-  clients: Promise<Client[]>;
+  clients: Observable<Client[]>;
   listLabel: string = 'Osoby ve vzhtahu:';
   selectLabel: string = 'Vybrat';
 

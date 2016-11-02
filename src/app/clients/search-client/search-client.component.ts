@@ -14,7 +14,6 @@ import { ClientService }          from '../client.service';
 import { SearchClientService }    from './search-client.service';
 import { SelectedClientsService } from '../selected-clients';
 
-
 @Component({
   selector: 'ng2-f-search-client',
   templateUrl: 'search-client.component.html'
@@ -31,7 +30,7 @@ export class SearchClientComponent implements OnInit {
   onSubmit() {
     this.client = new Client(null, '', '', '');
     this.client.update(this.clientFormManager.form.value);
-    this.searchClientService.searchClients(this.client).then(
+    this.searchClientService.searchClients(this.client).subscribe(
       clients => this.processClientsAfterSubmit(clients)
     );
   }

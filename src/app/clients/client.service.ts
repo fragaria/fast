@@ -6,6 +6,8 @@ import { HttpBaseService } from '../shared';
 
 import { Client } from 'ng2-f-client-models';
 
+import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 export class ClientService {
   protected url = 'api/clients';  // URL to web API
@@ -13,11 +15,11 @@ export class ClientService {
 
   constructor (protected http: HttpBaseService<Client>) { }
 
-  getClients(): Promise<Client[]> {
+  getClients(): Observable<Client[]> {
     return this.http.getObjects(this.url, this.model)
   }
 
-  saveClient(client: Client): Promise<Client> {
+  saveClient(client: Client): Observable<Client> {
     return client.id == null ? this.http.addObject(client, this.url, this.model) : this.http.updateObject(client, this.url, this.model)
   }
 
