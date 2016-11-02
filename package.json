@@ -136,7 +136,7 @@
     "bootstrap": "4.0.0-alpha.2",
     "core-js": "^2.4.1",
     "font-awesome": "^4.6.3",
-    "ng2-f-client-list": "^0.x",
+    "ng2-f-client-list": "~0.0.4",
     "ng2-f-client-models": "^0.x",
     "ng2-f-form-tools": "~0.1",
     "ng2-f-mock-api": "^0.x",
