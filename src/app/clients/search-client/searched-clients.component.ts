@@ -11,20 +11,9 @@ import { Observable } from 'rxjs/Observable';
 })
 export class SearchedClientsComponent {
   @Input() isActive: boolean;
-  _clients: Client[] | Observable<Client[]>;
+  @Input() clients: Client[] | Observable<Client[]>;
   listLabel: string = 'Nalezení klienti:';
   selectLabel: string = 'Vybrat';
-
-  @Input()
-  set clients(clients: Client[] | Observable<Client[]>) {
-    if (clients instanceof Array) {
-      this._clients = Observable.of(<Client[]>clients);
-    }
-  }
-
-  get clients(): Client[] | Observable<Client[]> {
-    return this._clients
-  }
 
   constructor(
     private selectedClientService: SelectedClientsService) { }
