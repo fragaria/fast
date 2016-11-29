@@ -21,6 +21,7 @@ const METADATA = {
   host: 'localhost',
   port: 8080,
   HMR: HMR,
+  timestamp: '1'
 };
 
 /*
@@ -154,7 +155,6 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: [helpers.root('*'), helpers.root('src', 'app', 'styles')],
         exclude: helpers.root('src', 'app'),
         loaders: ['style', 'css', 'postcss', 'sass']
       },

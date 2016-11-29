@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
 
-import { HttpBaseService } from '../shared';
+import { HttpRestJsonService } from '../core';
+import { Config } from '../config';
 import { Item } from './item.model';
 
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ItemService {
-  protected url = 'api/items';  // URL to web API
-  //private itemsUrl = 'https://private-0f9a88-itemsapi2.apiary-mock.com/items';
+  protected url: string;
   protected model = Item;
 
-  constructor (protected http: HttpBaseService<Item>) { }
+  constructor (private config: Config, protected http: HttpRestJsonService<Item>) {
+    // get url from config service
+    this.url = config.getVal('item.apiUrl');
+  }
 
   getItems (): Observable<Item[]> {
-    return this.http.getObjects(this.url, this.model)
+    return this.http.getObjects(this.url, {'model': this.model})
   }
 
   getItem (id: number | string): Observable<Item> {
     const url = `${this.url}/${id}`;
-    return this.http.getObject(url, this.model)
+    return this.http.getObject(url, {'model': this.model})
   }
 
 }
