@@ -2,7 +2,7 @@ import * as _         from "lodash";
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response, RequestOptions } from '@angular/http';
 
-import { HttpBaseService } from '../shared';
+import { HttpRestJsonService } from '../core';
 
 import { Client } from 'ng2-f-client-models';
 
@@ -13,14 +13,14 @@ export class ClientService {
   protected url = 'api/clients';  // URL to web API
   protected model = Client;
 
-  constructor (protected http: HttpBaseService<Client>) { }
+  constructor (protected http: HttpRestJsonService<Client>) { }
 
   getClients(): Observable<Client[]> {
     return this.http.getObjects(this.url, this.model)
   }
 
   saveClient(client: Client): Observable<Client> {
-    return client.id == null ? this.http.addObject(client, this.url, this.model) : this.http.updateObject(client, this.url, this.model)
+    return client.id == null ? this.http.addObject(this.url, client, { model: this.model }) : this.http.updateObject(this.url, client, { model: this.model })
   }
 
 }
