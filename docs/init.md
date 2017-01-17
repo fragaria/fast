@@ -2,7 +2,7 @@
 
 ### Popis
 
-Jedná se o pžíkaz, který připraví z této šablony nový čistý projekt. Pokud při spuštění zadáte, že chcete smazat `.git` složku, tak vám pak stačí dát `git init .` a můžete začít pracovat na vašem novém projektu.
+Jedná se o příkaz, který připraví z této šablony nový čistý projekt. Pokud při spuštění zadáte, že chcete smazat `.git` složku, tak vám pak stačí dát `git init .` a můžete začít pracovat na vašem novém projektu.
 
 ### Použití
 
